@@ -9,13 +9,21 @@
   ~ Chuck Norris can write multi-threaded applications with a single thread! ~
 */
 
+import * as express from 'express';
 import { getJoke } from './service';
 const baseUrl = 'http://api.icndb.com/jokes/random';
 
-getJoke(baseUrl)
-  .then((joke) => {
-    console.log(joke.categories);
-  })
-  .catch(err => {
-    console.log(err);
-  });
+let app = express();
+
+app.get('/', async (req, res) => {
+  try {
+    let joke = await getJoke(baseUrl);
+    res.json(joke);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+app.listen(3000, () => {
+  console.log('App listening on port 3000!');
+});
