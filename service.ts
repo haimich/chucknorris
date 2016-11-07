@@ -2,20 +2,25 @@ import * as request from 'request';
 
 interface Joke {
   text: string;
-  categories: string[];
+  categories?: string[];
 }
 
-export function getJoke(baseUrl: string): Promise<Joke> {
+export function getJoke(baseUrl: string, withCategories?): Promise<Joke> {
   return new Promise((resolve, reject) => {
     request(baseUrl, (err, response, body) => {
       if (err) {
         reject(err);
       } else {
-        let joke = JSON.parse(body).value;
-        resolve({
-          text: joke.joke,
-          categories: joke.categories
-        });
+        let parsed = JSON.parse(body).value;
+        let joke: Joke = {
+          text: parsed.joke
+        };
+
+        if (withCategories) {
+          joke.categories = parsed.categories;
+        }
+
+        resolve(joke);
       }
     });
   });

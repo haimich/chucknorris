@@ -12,9 +12,9 @@
 import { getJoke } from './service';
 const baseUrl = 'http://api.icndb.com/jokes/random';
 
-getJoke(baseUrl)
+getJoke(baseUrl, true)
   .then((joke) => {
-    console.log(joke.categories);
+    console.log(joke);
   })
   .catch(err => {
     console.log(err);
