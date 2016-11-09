@@ -11,7 +11,7 @@ export function getJoke(baseUrl: string): Promise<Joke> {
       if (err) {
         reject(err);
       } else {
-        let joke = JSON.parse(body).value;
+        let joke = JSON.parse(body);
         resolve({
           text: joke.joke,
           categories: joke.categories

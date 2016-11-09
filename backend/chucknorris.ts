@@ -11,7 +11,7 @@
 
 import * as express from 'express';
 import { getJoke } from './service';
-const baseUrl = 'http://api.icndb.com/jokes/random';
+const baseUrl = 'http://localhost:2000/jokes/random';
 
 let app = express();
 
