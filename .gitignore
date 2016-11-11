@@ -7,3 +7,7 @@ node_modules
 
 # Optional npm cache directory
 .npm
+
+# generated files
+backend/*.js
+frontend/*.js
