@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prestart": "tsc && browserify index.js > output.js",
+    "start": "static-server"
   },
   "author": "",
   "license": "ISC",
