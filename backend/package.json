@@ -4,7 +4,8 @@
   "description": "",
   "main": "chucknorris.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start": "node chucknorris.js"
   },
   "repository": {
     "type": "git",
